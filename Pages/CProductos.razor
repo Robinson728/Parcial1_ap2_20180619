@@ -1,0 +1,61 @@
+﻿@page "/Consultas"
+@page "/Consultas/{ProductoId:int}"
+
+@using Parcial1_ap2_20180619.Models;
+@using Parcial1_ap2_20180619.BLL; 
+
+<EditForm Model="productos" OnValidSubmit="Buscar">
+    <DataAnnotationsValidator/>
+    <div class="card">
+
+        <div class="card-header">
+            <h2>Consulta de Productos</h2>
+        </div>
+
+        <div class="card-body">
+            <div class="form-group">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ProductoId</th>
+                            <th>Descripc&oacute;n</th>
+                            <th>Existencia</th>
+                            <th>Costo</th>
+                            <th>Valor Inventario</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @foreach(var p in productos)
+                        {
+                            <tr>
+                                <td>@p.ProductoId</td>
+                                <td>@p.Descripcion</td>
+                                <td>@p.Existencia</td>
+                                <td>@p.Costo</td>
+                                <td>@p.ValorInventario</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</EditForm> 
+
+@code {
+    [Parameter]
+    public int ProductoId { get; set; }
+
+    private List<Productos> productos = new List<Productos>();
+
+    protected override void OnInitialized()
+    {
+        Buscar();
+    }
+
+    public void Buscar()
+    {
+        productos = ProductosBLL.GetList(r => true);
+    }
+}
