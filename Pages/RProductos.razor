@@ -1,0 +1,42 @@
+﻿@page "/Productos"
+@page "/Productos/{ProductoId:int}"
+
+@using Parcial1_ap2_20180619.Models;
+@using Parcial1_ap2_20180619.BLL;
+@inject IToastService toast
+
+<EditForm Model="productos" OnValidSubmit="Guardar">
+    <DataAnnotationsValidator/>
+</EditForm>
+
+@code {
+    [Parameter]
+    public int ProductoId { get; set; }
+
+    private Productos productos = new Productos();
+
+    protected override void OnInitialized()
+    {
+        Nuevo();
+    }
+
+    public void Nuevo()
+    {
+        productos = new Productos();
+    }
+
+    public void Guardar()
+    {
+        bool guardado;
+
+        guardado = ProductosBLL.Guardar(productos);
+
+        if (guardado)
+        {
+            Nuevo();
+            toast.ShowInfo("Guardado Correctamente.");
+        }
+        else
+            toast.ShowError("No fue posible guardar.");
+    }
+}
