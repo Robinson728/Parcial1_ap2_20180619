@@ -15,7 +15,7 @@ namespace Parcial1_ap2_20180619.Models
         public string Descripcion { get; set; }
 
         [Range(0.1, 100000, ErrorMessage = "El valor debe ser mayor a cero.")]
-        public int Existencia { get; set; }
+        public double Existencia { get; set; }
 
         [Range(0.1, 10000000, ErrorMessage = "El valor debe ser mayor a cero.")]
         public double Costo { get; set; }
