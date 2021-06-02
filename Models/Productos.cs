@@ -11,13 +11,13 @@ namespace Parcial1_ap2_20180619.Models
         [Key]
         public int ProductoId { get; set; }
         
-        [Required(ErrorMessage = "Llenar campo por favor.")]
+        [Required(ErrorMessage = "Por favor llenar campo.")]
         public string Descripcion { get; set; }
 
-        [Range(1, 100000, ErrorMessage = "El valor debe ser mayor a cero.")]
+        [Range(0.1, 100000, ErrorMessage = "El valor debe ser mayor a cero.")]
         public int Existencia { get; set; }
 
-        [Range(1, 10000000, ErrorMessage = "El valor debe ser mayor a cero.")]
+        [Range(0.1, 10000000, ErrorMessage = "El valor debe ser mayor a cero.")]
         public double Costo { get; set; }
 
         public double ValorInventario { get; set; }
