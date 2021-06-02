@@ -11,6 +11,7 @@ namespace Parcial1_ap2_20180619.DAL
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlite(@"Data Source = Data\GestionProductos.db");
+
         }
     }
 }
